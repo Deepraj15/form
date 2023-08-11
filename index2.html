@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .row{
+        border: 2px solid red;
+        height: 600px;
+        width: 100%;
+        display: flex;
+    }
+    .container{
+        border: 2px solid black;
+        height: 600px;
+        width: 50%;
+        
+    }
+    .row-border{
+        border: 2px solid green;
+        height: 196.5px;
+        display: flex;
+    }
+    .col{
+        border: 2px solid black;
+        height: 200px;
+        width: 100%;
+    }
+    .left{
+        margin-left: 10px;
+    }
+  
+
+
+</style>
+<body>
+    <div class="row">
+        <div class="container right">
+            <div class="row-border">
+                <div class="col">
+                    <img src="flower1.jpg" alt="" onclick="images(this)">
+                </div>
+                <div class="col">
+                    <img src="flower2.jpg" alt="" onclick="images(this)">
+                </div>
+                <div class="col">
+                    <img src="flower3.jpg" alt="" onclick="images(this)">
+                </div>
+            </div>
+            <div class="row-border">
+                <div class="col">
+                    <img src="flower4.jpg" alt="" onclick="images(this)">
+                </div>
+                <div class="col">
+                    <img src="flower5.jpg" alt="" onclick="images(this)">
+                </div>
+                <div class="col">
+                    <img src="flower6.jpg" alt="" onclick="images(this)">
+                </div>
+            </div>
+            <div class="row-border">
+                <div class="col">
+                    <img src="flower7.jpg" alt="" onclick="images(this)">
+                </div>
+                <div class="col">
+                    <img src="flower8.jpg" alt="" onclick="images(this)">
+                </div>
+                <div class="col">
+                    <img src="flower9.jpg" alt="" onclick="images(this)">
+                </div>
+            </div>
+        </div>
+        <div class="container left">
+              <img src="flower11.jpeg" alt="image" id="main">
+        </div>
+    </div>
+
+    <script>
+        images = (co)=>{
+        let a = document.getElementById("main")
+        let b  = a.src;
+        a.src = co.src;
+        co.src = b;
+    }
+
+    </script>
+</body>
+</html>

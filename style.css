@@ -1,0 +1,32 @@
+.yellow{
+    background-color: yellow;
+    color: white;
+}
+.red {
+    background-color: red;
+    color: white;
+}
+.text-dark{
+    color: black;
+}
+
+.bulb{
+   
+   background-color: red;
+ 
+}
+.bulb-container{
+    
+    height: 340px;
+    width: 340px;
+}
+
+#jokes{
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}

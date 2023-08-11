@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <title>Form</title>
+</head>
+<body>
+     <div class="container mt-5">
+        <form>
+        <div class="form-group">
+            <label for="">User Name</label>
+            <input onkeyup=" validateusername()" type="text" id="input-text" class="form-control" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+            <small id="input-text-error"></small>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input onkeyup="validatepassword()" type="password" id="input-password" class="form-control" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+            <small id="input-password-error"></small>
+        </div>
+        <div class="form-group">
+            <label for="">Mobile</label>
+            <input onkeyup="validatemobile()" type="number" id="input-number" class="form-control" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+            <small id="input-number-error"></small>
+
+        </div>
+        <div class="form-group">
+            <label for="">Qualification</label>
+            <select onchange="validatequalification()" name="select" id="qualification" class="form-control" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+                <option value="0">Select Qualification</option>
+                <option value="1">M.Tech</option>
+                <option value="2">B.Tech</option>
+                <option value="3">MCA</option>
+                <option value="4">BCA</option>
+                <option value="5">Other</option>
+            </select>
+            <small id="qualificationerror"></small>
+        </div>
+        <div class="form-group">
+            <label for="">Gender</label>
+            Male<input id="Male" type="radio" name="Gender" onchange="validategender()" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+            Female<input id="Female" type="radio" name="Gender" onchange="validategender()" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+            <small id="gendererror"></small>
+        </div>
+        <div class="form-group">
+            <label for="">Upload</label>
+            <input type="file" id="profilepic" onchange="validatefile()" class="form-control" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">
+            <small id="profilepicerror"></small>
+        </div>
+        </form>
+        <div class="form-group">
+            <button onclick="validatedata()" class="btn btn-primary" type="submit" style="filter: drop-shadow(10px 10px 20px rgb(201, 198, 198));">Sign Up</button>
+        </div>
+     </div>
+     <script>
+           validateusername = ()=>{
+             status = true;
+             var username = document.getElementById("input-text").value;
+             var usernameerror = document.getElementById("input-text-error");
+             if(username == "")
+             {
+                usernameerror.innerHTML = "Please enter the username";
+                usernameerror.style.color = "red";
+                status = false;
+             }
+             else{
+                usernameerror.innerHTML = "";
+             }
+             return status;
+           }
+
+           validatepassword = ()=>{
+            status = true;
+            var userpassword = document.getElementById("input-password").value;
+            var userpassworderror = document.getElementById("input-password-error");
+            if(userpassword == "")
+            {
+                userpassworderror.innerHTML = "Please enter the password";
+                userpassworderror.style.color = "red";
+                status = false;
+            }
+            else if (userpassword.length < 6 || userpassword.length > 10)
+            {
+                userpassworderror.innerHTML = "Please enter the password at least 6 to 10 digit"
+                userpassworderror.style.color = "red";
+                status = false;
+            }
+            else {
+                userpassworderror.innerHTML = "";
+            }
+            return status;
+           }
+
+           validatemobile = ()=>{
+            status = true;
+            var usernumber  = document.getElementById("input-number").value;
+            var usernumbererror = document.getElementById("input-number-error")
+            if(usernumber == "")
+            {
+                usernumbererror.innerHTML = "Please enter the mobile number";
+                usernumbererror.style.color = "red";
+                status  = false
+            } else if(isNaN(usernumber))
+            {
+                usernumbererror.innerHTML = "Allow only digits";
+                usernumbererror.style.color = "red";
+                status = false;
+            } else if(usernumber.length !== 10){
+                usernumbererror.innerHTML = "Invalid mobile number(contain at least 10 digit)";
+                usernumbererror.style.color  = "red";
+                status = false;
+            } else{
+                usernumbererror.innerHTML = "";
+            }
+            return status;
+             
+           }
+
+           validatequalification = ()=>{
+            status = true;
+            var userqualification = document.getElementById("qualification").value;
+            var userqualificationerror = document.getElementById("qualificationerror");
+            if(userqualification == 0)
+            {
+                   userqualificationerror.innerHTML = "Please select your qualification";
+                   userqualificationerror.style.color = "red";
+                   status = false;
+            }
+            else {
+                userqualificationerror.innerHTML = " ";
+            }
+            return status;
+           }
+
+           validategender = ()=>{
+            status = true;
+            var usergender1 = document.getElementById("Male").checked;
+            var usergender2 = document.getElementById("Female").checked;
+            var usergendererror = document.getElementById("gendererror");
+            if(usergender1 == false && usergender2 == false)
+            {
+                usergendererror.innerHTML = "Please select your gender";
+                usergendererror.style.color = "red";
+                status = false;
+            } else{
+                usergendererror.innerHTML = " ";
+            }
+            return status;
+           }
+
+           validatefile = ()=>{
+            status = true;
+            var userfile = document.getElementById("profilepic");
+            var userfileerror = document.getElementById("profilepicerror");
+            if(profilepic.files.length != 0){
+                var filename = profilepic.files[0].name;
+                var lastindex = filename.lastindexof(".")
+                var fileextension = filename.slice(lastindex);
+                if(fileextension != ".jpg"){
+                    status = false;
+                    profilepicerror.innerHTML = "profile pic required";
+                    profilepicerror.style.color = "red";
+                }
+                else{
+                    profilepicerror.innerHTML = " ";
+                }
+            }
+            else{
+                profilepicerror.innerHTML = "profile pic required";
+                profilepicerror.style.color = "red"
+                status = false;
+            }
+            return status;
+
+
+           }
+
+           
+           validatedata = ()=>{
+            var a = validateusername();
+            var b = validatepassword()
+            var c = validatemobile()
+            var d = validatequalification()
+            var e = validategender()
+            var f = validatefile()
+            if(a&&b&&c&&d&&e&&f){
+                return true
+            }
+            else {
+                return false
+            }
+           }
+     </script>
+</body>
+</html>
